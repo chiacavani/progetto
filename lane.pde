@@ -13,7 +13,7 @@ class Lane {
     }
   }
 
-  void update(Lane[] l, int index) {
+  void update(Lane[] l, int index, int diff) {
     //GLI OSTACOLI HANNO TRASP COME LA LINEA 
     refresh(); // rimette a 0 e dopppio for controlla 
     int[] notCurrentLane = new int[2];
@@ -27,7 +27,7 @@ class Lane {
     // 1 se c'è ostacolo
     if ((l[notCurrentLane[0]].pos[19] == 1 && l[notCurrentLane[1]].pos[19] != 1) || (l[notCurrentLane[0]].pos[19] != 1 && l[notCurrentLane[1]].pos[19] == 1) || (l[notCurrentLane[0]].pos[19] == 0 && l[notCurrentLane[1]].pos[19] == 0)) {
       if(this.pos[19]!=1){
-      if (random(0, 500) < 1)
+      if (random(0, 900-(250*diff)) < 1)
         generate();
      }
   }

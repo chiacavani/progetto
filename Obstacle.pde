@@ -16,11 +16,11 @@ class Obstacle {
   
   
    void setup(){
-   mov= new PImage[1][4];
-   ob=loadImage("minion2-45x66.png");
-   for (int i=0; i<4;i++){
+   mov= new PImage[2][3];
+   ob=loadImage("minion-45x66.png");
+   for (int i=0; i<3;i++){
      mov [0][i]=ob.get(0+ (45 *i),0,45,66);
-    
+     mov [1][i]=ob.get(0+ (45 *i),66,45,66);
     
      }
   
@@ -30,24 +30,9 @@ class Obstacle {
   }
 
   void show() {
-      currentFrame=(currentFrame + 0.08) % 3;
-      image(mov[0][1 + int(currentFrame)],x,y-27,50,56); //IN MOVIMENTO
+      currentFrame=(currentFrame + 0.05) % 2;
+      image(mov[1][1 + int(currentFrame)],x,y-27,50,56); //IN MOVIMENTO
   }
   
-  float getX(){
-    return this.x;
-  }
-  
-  void setX(float x){
-    this.x=x;
-  }
-  
-  float getY(){
-    return this.y;
-  }
-  
-  void setY(float y){
-    this.y=y;
-  }
 
 }
