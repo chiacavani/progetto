@@ -8,27 +8,32 @@ Player player;
 Obstacle[] vez;
 int gamestate=1;
 PImage startGame;
+PImage bg;
+
 
 void setup() {
   size(800, 600);
-  player = new Player(0,480);
+  player = new Player(10,480);
   keys = new boolean[128];
   vez= new Obstacle[200];
   l[0] = new Lane(450);
   l[1] = new Lane(500);
   l[2] = new Lane(550);
-  startGame=loadImage("youtube-logo-icon-black_175602.png");
+  startGame=loadImage("SCHERMATA_INIZ.png");
+  bg=loadImage("blue_space_scape_by_heatstroke99-d331bty.png");
   
   
 }
 
 void draw() {
   if(gamestate==0){
-  background(251, 125, 141);
-  move();
+  background(bg);
+  player.move();
+
   l[2].a = 255;
   l[1].a = 155;
   l[0].a = 55;
+  
   
   for (int i = 0; i < l.length; i++) {
     l[i].update(l, i);
@@ -40,8 +45,8 @@ void draw() {
    }
    
   player.show();
+
   
-   
   textSize(20);
   fill(0,0,0);
   //LOAD FONT AND CREATE FONT CERCA
@@ -54,39 +59,15 @@ void draw() {
   }
 }
 
-void move(){
-    if (keys['a'] && ((player.getX()-10)>0)){
-      player.updatePlayer(-5,0);
-      
-    }
-     
-    if (keys['d'] && ((player.getX()+32)<800)){
-      player.updatePlayer(+5,0);
-    }  
-      
-    if (keys['w'] && posizione > 0){
-      posizione --;
-      player.updatePlayer(0,-50.0);
-       }
-    
-   
-    if (keys['s'] && posizione < 2){
-      posizione++;
-    player.updatePlayer(0,50.0);
-  
-      }
-      
-  }
-  
 void keyPressed(){
-  keys[key]=true;
+   keys[key]=true;
 }
 
 void keyReleased(){
   keys[key]=false;
 
 }
-
 void mousePressed(){
   if(gamestate==1) gamestate=0;
+ 
 }
